@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
 import './types/index';
+import logger from './utils/logger';
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ if (fs.existsSync(commandsPath)) {
     if ('data' in command && 'execute' in command) {
       client.commands.set(command.data.name, command);
     } else {
-      console.warn(`[WARN] ${file} is missing a required "data" or "execute" export.`);
+      logger.warn({ file }, 'Command file is missing a required "data" or "execute" export');
     }
   }
 }
@@ -47,7 +48,7 @@ for (const file of eventFiles) {
 }
 
 function shutdown(): void {
-  console.log('[INFO] Shutting down...');
+  logger.info('Shutting down...');
   client.destroy();
   process.exit(0);
 }
