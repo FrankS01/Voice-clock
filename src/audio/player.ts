@@ -18,10 +18,8 @@ export interface ChimeOptions {
   pauseMs: number;
 }
 
-const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
-
 export async function playChime(options: ChimeOptions): Promise<void> {
-  const { guild, channelId, soundPack, count, pauseMs } = options;
+  const { guild, channelId, soundPack, count } = options;
   const log = childLogger({ guildId: guild.id, guildName: guild.name });
 
   const channel = guild.channels.cache.get(channelId);
@@ -54,9 +52,7 @@ export async function playChime(options: ChimeOptions): Promise<void> {
       const file = isFinal && soundPack.finalBongFile ? soundPack.finalBongFile : soundPack.bongFile;
       const resource = createAudioResource(file);
       player.play(resource);
-      log.info({ channelName: channel.name, bong: i + 1, total: count }, 'Playing bong');
       await entersState(player, AudioPlayerStatus.Idle, 30_000);
-      if (i < count - 1) await sleep(pauseMs);
     }
 
     log.info({ channelName: channel.name }, 'Chime complete, leaving voice channel');
