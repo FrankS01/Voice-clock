@@ -1,0 +1,14 @@
+services:
+  voice-clock:
+    build: .
+    restart: unless-stopped
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      CLIENT_ID: ${CLIENT_ID}
+      DB_PATH: /data/voice-clock.sqlite
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    volumes:
+      - voice-clock-data:/data
+
+volumes:
+  voice-clock-data:
