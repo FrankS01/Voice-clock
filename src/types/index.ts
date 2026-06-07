@@ -5,6 +5,14 @@ import {
   SlashCommandBuilder,
 } from 'discord.js';
 
+export interface GuildSettings {
+  guildId: string;
+  channelId: string;
+  timezone: string;
+  halfHour: boolean;
+  soundPack: string;
+}
+
 export interface Command {
   data: SlashCommandBuilder;
   execute(interaction: ChatInputCommandInteraction): Promise<void>;
