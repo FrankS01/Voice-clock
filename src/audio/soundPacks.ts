@@ -4,6 +4,7 @@ export interface SoundPack {
   id: string;
   label: string;
   bongFile: string;
+  finalBongFile?: string; // if set, used for the last bong in a sequence
 }
 
 const SOUNDS_DIR = path.join(__dirname, '..', 'sounds');
@@ -13,6 +14,7 @@ const REGISTRY: SoundPack[] = [
     id: 'clock-tower',
     label: 'Clock Tower',
     bongFile: path.join(SOUNDS_DIR, 'clock-tower', 'bong.mp3'),
+    finalBongFile: path.join(SOUNDS_DIR, 'clock-tower', 'bong-final.mp3'),
   },
 ];
 

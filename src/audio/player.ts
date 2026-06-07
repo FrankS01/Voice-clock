@@ -50,7 +50,9 @@ export async function playChime(options: ChimeOptions): Promise<void> {
     connection.subscribe(player);
 
     for (let i = 0; i < count; i++) {
-      const resource = createAudioResource(soundPack.bongFile);
+      const isFinal = i === count - 1;
+      const file = isFinal && soundPack.finalBongFile ? soundPack.finalBongFile : soundPack.bongFile;
+      const resource = createAudioResource(file);
       player.play(resource);
       log.info({ channelName: channel.name, bong: i + 1, total: count }, 'Playing bong');
       await entersState(player, AudioPlayerStatus.Idle, 30_000);

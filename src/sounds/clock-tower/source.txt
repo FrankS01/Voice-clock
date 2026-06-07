@@ -1,4 +1,6 @@
-Place a short (~1 s) bell/bong MP3 here named: bong.mp3
+Place two MP3 files here:
+- bong.mp3       — short bong (~1 s), used for all but the final strike
+- bong-final.mp3 — longer bong with full ring-out tail, used for the last strike
 
 Free sources (no attribution required):
 - https://mixkit.co/free-sound-effects/bell/
