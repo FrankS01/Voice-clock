@@ -2,6 +2,8 @@
 
 A Discord bot that chimes in voice channels like a clock tower — once per hour at the top of the hour, and optionally once at the half-hour mark. The number of bongs matches the 12-hour clock (1 at 1:00, 6 at 6:00, 12 at midnight/noon, etc.).
 
+Disclaimer: This project has almost been completely vibe-coded using Claude Code as this was meant to be a low-effort way to annoy my friends :)
+
 ## Prerequisites
 
 - Node.js 18 or higher
